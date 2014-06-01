@@ -1,0 +1,49 @@
+
+/*.block_assignment_daterollover .mform fieldset {
+    border:2px solid black;
+    
+
+}*/
+
+.block_assignment_daterollover .mform fieldset > div {
+    margin: .1em 0em;
+}
+
+.block_assignment_daterollover .mform .fitem .fitemtitle {
+    text-align: left;    
+    width: 55%;
+    
+}
+.block_assignment_daterollover .mform .label {
+    float: left;    
+    margin:0 0 0 0;
+   display :block;
+    text-align:right;
+    
+}
+
+.block_assignment_daterollover .mform .fitem.required .felement,
+.block_assignment_daterollover .mform .fitem .felement.fsubmit,
+.block_assignment_daterollover .mform .fitem.required .fitemtitle {
+    text-align: left;
+    width: 100%;
+    margin-left: 0px;
+}
+
+
+.block_assignment_daterollover .mform .fitem.static .felement {
+    
+    text-align: left;
+}
+
+.block_assignment_daterollover .fdescription.required {
+    display: none;
+}
+
+.block_assignment_daterollover fieldset > select + label + select {
+    width: 4em;
+}
+
+.block_assignment_daterollover fieldset > select + label + select + label + select {
+    width: auto;
+}
