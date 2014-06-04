@@ -65,10 +65,10 @@ class assignment_daterollover_form extends moodleform {
 	*required -if the value is not empty, integer 0 is not considered an empty value.
 	*
        **/
-       $mform->addRule('date', null, 'required', null, 'client');
-       $mform->addRule('cutoff', null, 'required', null, 'client');
-       $mform->addRule('allowsubmission', null, 'required', null, 'client');
-     //  $mform->disabledIf('submit', 'updateallowsub', 'checked', $value='1') 
+       $mform->addRule('date', null, 'required', null, 'server');
+       $mform->addRule('cutoff', null, 'required', null, 'server');
+       $mform->addRule('allowsubmission', null, 'required', null, 'server');
+     
  $mform->getSubmitValues();
 
 
