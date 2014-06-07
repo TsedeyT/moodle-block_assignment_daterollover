@@ -81,21 +81,33 @@ $sql4=$DB->get_fieldset_select('assign','cutoffdate','id=?',array($data->assign)
 $sql5=$DB->get_fieldset_select('assign','allowsubmissionsfromdate','id=?',array($data->assign));
 
 
+
+
+
+
 if ($data->updateduedate=='Adjust duedate')
 {
-$tdate =new DateTime();
-$tdate->setTimestamp($data->date);
-echo '<br> New duedate:</br>'.$tdate->format('U = Y-m-d H:i:s') . "\n";
+
 $record = new stdClass();
 $record ->id = $data->assign;
 $record ->duedate = $data->date ;
 $DB->update_record('assign', $record);
+
+    $sqlevent=$DB->get_fieldset_select('event','id','instance=?',array($data->assign));
+    $eventrecord = new stdClass();
+   // $upcomingdiff=( $data->date)-(86400*5);
+    $eventrecord->id =  $sqlevent[0];
+    $currentime =time();
+    $eventrecord->timestart =$data->date;
+    $eventrecord->timemodified =  $currentime ;
+    $DB->update_record('event', $eventrecord);
+   
 }
+
+
 if ($data->updatecutoff=='Adjust cutoff date')
 {
-$tcutoff =new DateTime();
-$tcutoff->setTimestamp($data->cutoff);
-echo '<br> New cutoffdate:</br>'.$tcutoff->format('U = Y-m-d H:i:s') . "\n";
+
 
 $cutoffrecord = new stdClass();
 $cutoffrecord ->id = $data->assign;
@@ -105,16 +117,14 @@ $DB->update_record('assign', $cutoffrecord);
 }
 if ($data->updateallowsub=='Adjust allow submission')
 {
-$tallowsubmission =new DateTime();
-$tallowsubmission->setTimestamp($data->allowsubmission);
-echo '<br> New allowsubmissionfrom:</br>'.$tallowsubmission->format('U = Y-m-d H:i:s') . "\n";
+
 $allowsubrecord = new stdClass();
 $allowsubrecord ->id = $data->assign;
 $allowsubrecord ->allowsubmissionsfromdate = $data->allowsubmission ;
 $DB->update_record('assign', $allowsubrecord);
 
-
 }
+
 
 
 }
